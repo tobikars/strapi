@@ -139,9 +139,10 @@ module.exports = {
       // Connect the user thanks to the third-party provider.
       let user, error;
       try {
-        [user, error] = await strapi.plugins[
+        let r = await strapi.plugins[
           'users-permissions'
         ].services.providers.connect(provider, ctx.query);
+        [user, error] = r;
       } catch ([user, error]) {
         return ctx.badRequest(
           null,

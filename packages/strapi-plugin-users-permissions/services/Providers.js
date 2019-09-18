@@ -26,6 +26,7 @@ exports.connect = (provider, query) => {
 
   return new Promise((resolve, reject) => {
     if (!access_token) {
+      strapi.log.error('No Access token');
       return reject(null, {
         message: 'No access_token.',
       });
