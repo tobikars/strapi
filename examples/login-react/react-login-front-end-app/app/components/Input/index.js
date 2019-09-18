@@ -60,7 +60,7 @@ class Input extends React.Component {
     }
   };
 
-  handleChangeCheckbox = e => {
+  handleChangeCheckbox = (e) => {
     const target = {
       type: 'checkbox',
       value: !this.props.value,
@@ -70,7 +70,7 @@ class Input extends React.Component {
     this.props.onChange({ target });
   };
 
-  handleBlurEmail = e => {
+  handleBlurEmail = (e) => {
     this.setState({ isFocus: !this.state.isFocus });
 
     if (this.props.handleBlur) {
@@ -80,7 +80,7 @@ class Input extends React.Component {
     }
   };
 
-  handleFocusEmail = e => {
+  handleFocusEmail = (e) => {
     this.setState({ isFocus: !this.state.isFocus });
 
     if (this.props.onFocus) {
@@ -88,7 +88,7 @@ class Input extends React.Component {
     }
   };
 
-  handleToggle = e => {
+  handleToggle = (e) => {
     const target = {
       type: 'toggle',
       name: this.props.name,
@@ -98,17 +98,15 @@ class Input extends React.Component {
     this.props.onChange({ target });
   };
 
-  handleShowPassword = () =>
-    this.setState({ showPassword: !this.state.showPassword });
+  handleShowPassword = () => this.setState({ showPassword: !this.state.showPassword });
 
-  renderErrors = errorStyles => {
+  renderErrors = (errorStyles) => {
     // eslint-disable-line consistent-return
     if (!this.props.noErrorsDescription) {
       const divStyle = errorStyles || 'errorContainer';
 
       return map(this.state.errors, (error, key) => {
-        const displayError =
-          isObject(error) && error.id ? <span>{error.id}</span> : error;
+        const displayError = isObject(error) && error.id ? <span>{error.id}</span> : error;
         return (
           <div
             key={key}
@@ -132,13 +130,13 @@ class Input extends React.Component {
 
     return (
       <div
-        className={`inputCheckbox ${this.props.customBootstrapClass ||
-          'col-md-3'}`}
+        className={`inputCheckbox ${this.props.customBootstrapClass
+          || 'col-md-3'}`}
       >
         <div className="form-check">
           {title}
           <label
-            className={`checkboxLabel form-check-label`}
+            className="checkboxLabel form-check-label"
             htmlFor={this.props.name}
           >
             <input
@@ -177,9 +175,9 @@ class Input extends React.Component {
           <span className="input-group-addon addonEmail" />
           <input
             className={`form-control ${
-              !this.props.deactivateErrorHighlight &&
-              !isEmpty(this.state.errors)
-                ? `form-control-danger is-invalid error`
+              !this.props.deactivateErrorHighlight
+              && !isEmpty(this.state.errors)
+                ? 'form-control-danger is-invalid error'
                 : ''
             }`}
             onChange={this.props.onChange}
@@ -304,7 +302,7 @@ class Input extends React.Component {
     );
   }
 
-  validate = value => {
+  validate = (value) => {
     let errors = [];
 
     const emailRegex = new RegExp(
@@ -334,7 +332,7 @@ class Input extends React.Component {
     }
 
     if (includes(errors, requiredError)) {
-      errors = reject(errors, error => error !== requiredError);
+      errors = reject(errors, (error) => error !== requiredError);
     }
 
     return errors;

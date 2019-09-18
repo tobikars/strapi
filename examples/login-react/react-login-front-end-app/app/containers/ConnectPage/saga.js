@@ -1,4 +1,6 @@
-import { all, call, cancel, fork, take, takeLatest } from 'redux-saga/effects';
+import {
+  all, call, cancel, fork, take, takeLatest,
+} from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { history } from 'app';
 

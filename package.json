@@ -11,7 +11,11 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.0.0",
+    "eslint-import-resolver-webpack": "^0.11.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.0",
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-redux-saga": "^1.0.0",
@@ -25,10 +29,12 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
     "react-test-renderer": "^16.9.0",
+    "redux-saga": "^1.1.1",
     "request": "^2.87.0",
     "request-promise-native": "^1.0.7",
     "snyk": "^1.99.0",
     "wait-on": "^3.2.0",
+    "webpack": "^4.40.2",
     "yargs": "^13.2.2"
   },
   "scripts": {
@@ -84,7 +90,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": ""
     }
   },
   "lint-staged": {
@@ -93,7 +99,7 @@
       "git add"
     ],
     "*.js": [
-      "eslint --fix",
+      "eslint",
       "git add"
     ]
   }

@@ -23,7 +23,7 @@ function checkStatus(response) {
     return response;
   }
 
-  return parseJSON(response).then(responseFormatted => {
+  return parseJSON(response).then((responseFormatted) => {
     const error = new Error(response.statusText);
     error.response = response;
     error.response.payload = responseFormatted;
@@ -39,7 +39,7 @@ function checkStatus(response) {
  */
 function formatQueryParams(params) {
   return Object.keys(params)
-    .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`)
+    .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`)
     .join('&');
 }
 
@@ -57,23 +57,19 @@ export default function request(
   shouldWatchServerRestart = false
 ) {
   // Set headers
-  options.headers = Object.assign(
-    {
-      'Content-Type': 'application/json',
-    },
-    options.headers,
-    {}
-  );
+  options.headers = {
+    'Content-Type': 'application/json',
+    ...options.headers,
+
+  };
 
   const token = auth.getToken();
 
   if (token) {
-    options.headers = Object.assign(
-      {
-        Authorization: `Bearer ${token}`,
-      },
-      options.headers
-    );
+    options.headers = {
+      Authorization: `Bearer ${token}`,
+      ...options.headers,
+    };
   }
 
   if (options && options.params) {

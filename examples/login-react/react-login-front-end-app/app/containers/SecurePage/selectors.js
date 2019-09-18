@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the securePage state domain
  */
-const selectSecurePageDomain = state => state.get('securePage');
+const selectSecurePageDomain = (state) => state.get('securePage');
 
 /**
  * Other specific selectors
@@ -13,11 +13,10 @@ const selectSecurePageDomain = state => state.get('securePage');
  * Default selector used by SecurePage
  */
 
-const makeSelectSecurePage = () =>
-  createSelector(
-    selectSecurePageDomain,
-    substate => substate.toJS()
-  );
+const makeSelectSecurePage = () => createSelector(
+  selectSecurePageDomain,
+  (substate) => substate.toJS()
+);
 
 export default makeSelectSecurePage;
 export { selectSecurePageDomain };

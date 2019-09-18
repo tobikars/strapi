@@ -30,7 +30,7 @@ export default class HomePage extends React.Component {
     }
   }
 
-  logout = e => {
+  logout = (e) => {
     e.preventDefault();
     auth.clearAppStorage();
     this.setState({ showButton: false });
@@ -47,7 +47,8 @@ export default class HomePage extends React.Component {
           </p>
           <p>
             Try to access a protected url by either changing the url from the
-            browser or by clicking on the{' '}
+            browser or by clicking on the
+            {' '}
             <Link to={'/${Math.random}'}>link</Link>
           </p>
           {this.state.showButton ? (

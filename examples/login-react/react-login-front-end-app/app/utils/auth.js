@@ -3,8 +3,8 @@ import { isEmpty } from 'lodash';
 const TOKEN_KEY = 'jwtToken';
 const USER_INFO = 'userInfo';
 
-const parse = JSON.parse;
-const stringify = JSON.stringify;
+const { parse } = JSON;
+const { stringify } = JSON;
 
 const auth = {
   /**

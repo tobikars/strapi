@@ -12,17 +12,16 @@ import './styles.scss';
 
 /* eslint-disable react/require-default-props */
 function Button(props) {
-  const buttonProps = Object.assign({}, props);
+  const buttonProps = { ...props };
   const propsToDelete = ['primary', 'social'];
 
-  propsToDelete.map(value => delete buttonProps[value]);
+  propsToDelete.map((value) => delete buttonProps[value]);
 
-  const label =
-    !isEmpty(props.label) && !props.children ? (
-      <span>{props.label}</span>
-    ) : (
-      props.children
-    );
+  const label = !isEmpty(props.label) && !props.children ? (
+    <span>{props.label}</span>
+  ) : (
+    props.children
+  );
 
   return (
     <button

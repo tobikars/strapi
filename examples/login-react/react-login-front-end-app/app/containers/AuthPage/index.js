@@ -49,7 +49,7 @@ export class AuthPage extends React.Component {
    * Create the form depending on the URL
    * @param {Object} props
    */
-  setForm = props => {
+  setForm = (props) => {
     const params = props.location.search
       ? replace(props.location.search, '?code=', '')
       : props.match.params.id;
@@ -79,10 +79,9 @@ export class AuthPage extends React.Component {
   };
 
   render() {
-    const divStyle =
-      this.props.match.params.authType === 'register'
-        ? { marginTop: '3.2rem' }
-        : { marginTop: '.9rem' };
+    const divStyle = this.props.match.params.authType === 'register'
+      ? { marginTop: '3.2rem' }
+      : { marginTop: '.9rem' };
     const inputs = get(form, this.props.match.params.authType) || [];
     const providers = [
       'discord',
@@ -115,14 +114,14 @@ export class AuthPage extends React.Component {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-md-12">
-                  {providers.map(provider => (
+                  {providers.map((provider) => (
                     <SocialLink provider={provider} key={provider} />
                   ))}
                 </div>
               </div>
               <FormDivider />
               <form
-                onSubmit={e => {
+                onSubmit={(e) => {
                   e.preventDefault();
                   this.props.submit();
                 }}

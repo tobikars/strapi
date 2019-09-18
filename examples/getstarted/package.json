@@ -5,6 +5,7 @@
   "description": "A Strapi application.",
   "scripts": {
     "develop": "strapi develop",
+    "dev-debug": "node --inspect=0.0.0.0:9229 ./node_modules/.bin/strapi dev",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
