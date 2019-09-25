@@ -349,7 +349,47 @@ const getProfile = async (provider, query, callback) => {
             email: `${body.data.username}@strapi.io` // dummy email as Instagram does not provide user email
           });
         }
-      });
+      })
+    }
+    case 'scantrust': {
+      const config = {
+        scantrust: {
+          'http://localhost:8000/o': {
+            __domain: {
+              auth: {
+                auth: { bearer: '[0]' },
+              },
+            },
+            '{endpoint}': {
+              __path: {
+                alias: '__default',
+              },
+            },
+            '{endpoint}': {
+              __path: {
+                alias: 'oauth',
+                version: 'v2',
+              },
+            },
+          },
+        },
+      };
+      const scantrust = new Purest({ provider: 'scantrust', config });
+
+      scantrust
+        .query('oauth')
+        .get('tokeninfo')
+        .qs({ access_token })
+        .request((err, res, body) => {
+          if (err) {
+            callback(err);
+          } else {
+            callback(null, {
+              username: body.email.split('@')[0],
+              email: body.email,
+            });
+          }
+        });
       break;
     }
     default:

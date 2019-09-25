@@ -33,6 +33,14 @@ module.exports = async () => {
       enabled: true,
       icon: 'envelope',
     },
+    scantrust: {
+      enabled: false,
+      icon: 'qrcode',
+      key: 'go8KI1pkBJvlRJ0MNfD9S4i3CgGHNAPeevzskkH2',
+      secret: 'rVKy3uVaBMoiN645SkGh2L3Q2KFx2ZmEhGll8GNfKBSr7sWsTdi1WvYNYpeme6KOiMWgMoevl0g0SrJWnnhbftkBwsjnT2WiebxD6p5WWm6VUeJyq4tw7Ru3Yyrp1Adc',
+      callback: '/auth/scantrust/callback',
+      scope: ['identify', 'email'],
+    },
     discord: {
       enabled: false,
       icon: 'comments',

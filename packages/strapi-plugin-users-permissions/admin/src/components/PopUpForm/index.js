@@ -48,6 +48,8 @@ class PopUpForm extends React.Component {
   getRedirectURIProviderConf = () => {
     // NOTE: Still testings providers so the switch statement is likely to change
     switch (this.props.dataToEdit) {
+      case 'scantrust':
+        return `${strapi.backendURL}/connect/scantrust/callback`;
       case 'discord':
         return `${strapi.backendURL}/connect/discord/callback`;
       case 'facebook':
