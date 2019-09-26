@@ -152,6 +152,7 @@ module.exports = {
 
       // Connect the user thanks to the third-party provider.
       let user, error;
+
       try {
         let r = await strapi.plugins[
           'users-permissions'

@@ -354,7 +354,7 @@ const getProfile = async (provider, query, callback) => {
     case 'scantrust': {
       const config = {
         scantrust: {
-          'http://localhost:8000/o': {
+          'http://localhost:8000': {
             __domain: {
               auth: {
                 auth: { bearer: '[0]' },
@@ -365,31 +365,28 @@ const getProfile = async (provider, query, callback) => {
                 alias: '__default',
               },
             },
-            '{endpoint}': {
-              __path: {
-                alias: 'oauth',
-                version: 'v2',
-              },
-            },
           },
         },
       };
       const scantrust = new Purest({ provider: 'scantrust', config });
 
+      strapi.log.debug('access_token ' + access_token)
+      
       scantrust
-        .query('oauth')
-        .get('tokeninfo')
-        .qs({ access_token })
-        .request((err, res, body) => {
-          if (err) {
-            callback(err);
-          } else {
-            callback(null, {
-              username: body.email.split('@')[0],
-              email: body.email,
-            });
-          }
-        });
+      .query()
+      .get('me')
+      .auth(access_token)
+      .request((err, res, body) => {
+        strapi.log.debug('/me result: ' + JSON.stringify(res))
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, {
+            username: body.username,
+            email: body.email,
+          });
+        }
+      });
       break;
     }
     default:

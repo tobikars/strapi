@@ -33,13 +33,25 @@ module.exports = async () => {
       enabled: true,
       icon: 'envelope',
     },
+    // WARNING: for a new provider (such as scantrust!), the below settings MUST be added to 
+    // oauth.json in node_modules/grant/config/oauth.json 
+    // "scantrust": {
+    //   "authorize_url": "http://localhost:8000/o/authorize",
+    //   "access_url": "http://localhost:8000/o/token/",
+    //   "oauth": 2,
+    //   "scope_delimiter": " "
+    // }
     scantrust: {
       enabled: false,
       icon: 'qrcode',
       key: 'go8KI1pkBJvlRJ0MNfD9S4i3CgGHNAPeevzskkH2',
       secret: 'rVKy3uVaBMoiN645SkGh2L3Q2KFx2ZmEhGll8GNfKBSr7sWsTdi1WvYNYpeme6KOiMWgMoevl0g0SrJWnnhbftkBwsjnT2WiebxD6p5WWm6VUeJyq4tw7Ru3Yyrp1Adc',
       callback: '/auth/scantrust/callback',
-      scope: ['identify', 'email'],
+      authorize_url: "http://localhost:8000/o/authorize",  // added instead of in oauth.json
+      access_url: "http://localhost:8000/o/token/",  // added instead of in oauth.json
+      oauth: 2,  // added instead of in oauth.json
+      scope_delimiter: " ", // added instead of in oauth.json
+      scope: ['read', 'write', 'introspection'],
     },
     discord: {
       enabled: false,
